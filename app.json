@@ -28,6 +28,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "4a8ce1c5-e9fa-4757-8ab4-0348390e471d"
+      }
+    },
+    "owner": "ibizabroker"
   }
 }
