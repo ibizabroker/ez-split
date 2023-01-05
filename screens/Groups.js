@@ -2,14 +2,14 @@ import { Text, View, StyleSheet, SafeAreaView } from 'react-native'
 import React, { Component } from 'react'
 import AppBar from '../components/AppBar';
 
-export class Home extends Component {
+export class Groups extends Component {
   render() {
     return (
       <View style={styles.containerInitial}>
         <AppBar you={'Ez'} fluence={'Split'} />
 
         <SafeAreaView style={styles.container}>
-          <Text>Home</Text>
+          <Text>Groups</Text>
         </SafeAreaView>
 
       </View>
@@ -20,7 +20,7 @@ export class Home extends Component {
 const styles = StyleSheet.create({
   containerInitial: {
     flex: 1,
-    backgroundColor: '#fff'
+    backgroundColor: '#FFFFFF'
   },
   container: {
     flex: 1,
@@ -28,4 +28,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Home
+export default Groups
