@@ -1,9 +1,8 @@
-import Home from './screens/Home';
+import BottomNavigationBar from './components/BottomNavigationBar';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Provider as PaperProvider } from 'react-native-paper';
-import { BackHandler } from 'react-native';
 
 const Stack = createStackNavigator();
 
@@ -16,15 +15,7 @@ function App() {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}} >
 
-      <Stack.Screen 
-        name="Home" 
-        component={Home} 
-        listeners={{ 
-          focus: () => BackHandler.addEventListener('hardwareBackPress',handleBackButton),
-          blur: () => BackHandler.removeEventListener('hardwareBackPress',handleBackButton)
-        }}
-      />
-      {/* <Stack.Screen name="SecondScreen" component={SecondScreen} /> */}
+      <Stack.Screen name="BottomNavigationBar" component={BottomNavigationBar} />
       
     </Stack.Navigator>
   );
