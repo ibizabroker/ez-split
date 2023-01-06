@@ -6,10 +6,10 @@ export class CreateGroup extends Component {
   render() {
     return (
       <View style={styles.containerInitial}>
-        <AppBar you={'EZ '} fluence={'Split'} />
+        <AppBar ez={'EZ '} split={'Split'} />
 
         <SafeAreaView style={styles.container}>
-          <Text>CreateGroup</Text>
+          <Text style={{fontFamily: 'Montserrat', color: '#D3D3D3'}}>CreateGroup</Text>
         </SafeAreaView>
 
       </View>
@@ -20,7 +20,7 @@ export class CreateGroup extends Component {
 const styles = StyleSheet.create({
   containerInitial: {
     flex: 1,
-    backgroundColor: '#FFFFFF'
+    backgroundColor: '#121212'
   },
   container: {
     flex: 1,

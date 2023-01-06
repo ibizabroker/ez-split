@@ -62,7 +62,7 @@ function BottomNavigationBar() {
           tabBarActiveBackgroundColor: '#332940',
           tabBarInactiveBackgroundColor: '#332940',
           tabBarHideOnKeyboard: true,
-          tabBarStyle:{height: 63}
+          tabBarStyle: {height: 63, borderTopWidth: 0},
         }}
         
       >
