@@ -3,13 +3,13 @@ import { Text, StyleSheet } from "react-native";
 
 export default function AppBar(props) {
   return (
-    <Appbar.Header mode='center-aligned' style={{backgroundColor: '#121212'}} >
+    <Appbar.Header mode='center-aligned' style={{backgroundColor: '#332940'}} >
       <Appbar.Content 
         title={
-          <Text style={styles.you} >
-            {props.you}
-            <Text style={styles.fluence} >
-              {props.fluence}
+          <Text style={styles.ez} >
+            {props.ez}
+            <Text style={styles.split} >
+              {props.split}
             </Text>
           </Text>
         } 
@@ -19,14 +19,14 @@ export default function AppBar(props) {
 }
 
 const styles = StyleSheet.create({
-  you: {
-    // fontFamily: 'Party-Confetti',
+  ez: {
+    fontFamily: 'Montserrat-SemiBold',
     fontSize: 26,
-    color:'#FFFFFF'
+    color:'#FC4949'
   },
-  fluence: {
-    // fontFamily: 'Party-Confetti',
+  split: {
+    fontFamily: 'Montserrat-SemiBold',
     fontSize: 26,
-    color:'#F0F0F0'
+    color:'#D3D3D3'
   }
 });

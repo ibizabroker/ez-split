@@ -6,7 +6,7 @@ export class Groups extends Component {
   render() {
     return (
       <View style={styles.containerInitial}>
-        <AppBar you={'Ez'} fluence={'Split'} />
+        <AppBar ez={'EZ '} split={'Split'} />
 
         <SafeAreaView style={styles.container}>
           <Text>Groups</Text>

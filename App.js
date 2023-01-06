@@ -1,3 +1,5 @@
+import useCachedResources from './hooks/UseCachedResources';
+
 import BottomNavigationBar from './components/BottomNavigationBar';
 
 import { NavigationContainer } from '@react-navigation/native';
@@ -7,18 +9,18 @@ import { Provider as PaperProvider } from 'react-native-paper';
 const Stack = createStackNavigator();
 
 function App() {
-  function handleBackButton(){
-    BackHandler.exitApp();
-    return true;
+  const isLoadingComplete = useCachedResources();
+  if (!isLoadingComplete) {
+    return null;
+  } else {
+    return (
+      <Stack.Navigator screenOptions={{headerShown: false}} >
+
+        <Stack.Screen name="BottomNavigationBar" component={BottomNavigationBar} />
+        
+      </Stack.Navigator>
+    );
   }
-
-  return (
-    <Stack.Navigator screenOptions={{headerShown: false}} >
-
-      <Stack.Screen name="BottomNavigationBar" component={BottomNavigationBar} />
-      
-    </Stack.Navigator>
-  );
 }
 
 export default () => {

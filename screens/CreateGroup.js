@@ -6,7 +6,7 @@ export class CreateGroup extends Component {
   render() {
     return (
       <View style={styles.containerInitial}>
-        <AppBar you={'Ez'} fluence={'Split'} />
+        <AppBar you={'EZ '} fluence={'Split'} />
 
         <SafeAreaView style={styles.container}>
           <Text>CreateGroup</Text>
