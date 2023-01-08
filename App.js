@@ -4,7 +4,7 @@ import BottomNavigationBar from './components/BottomNavigationBar';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { Provider as PaperProvider } from 'react-native-paper';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 const Stack = createStackNavigator();
 
@@ -26,9 +26,9 @@ function App() {
 export default () => {
   return (
     <NavigationContainer>
-     <PaperProvider>
+     <SafeAreaProvider>
         <App />
-     </PaperProvider>     
+     </SafeAreaProvider>     
     </NavigationContainer>
   )
 }
