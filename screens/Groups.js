@@ -29,17 +29,15 @@ const Groups = () => {
     <View style={styles.containerInitial}>
         <AppBar ez={'EZ '} split={'Split'} />
 
-        {groups === null 
-          ? 
-            <View style={styles.container}>
-              <Text style={styles.noGroupsText}>You don't have any groups yet. Go to the Create Group tab to add a group.</Text>
-            </View>
-          :              
-            groups.map((item) => {
-              return (
-                <ScrollView
-                  key={item.title}
-                >
+        <ScrollView contentContainerStyle={{flexGrow: 1}}>
+          {groups === null 
+            ? 
+              <View style={styles.container}>
+                <Text style={styles.noGroupsText}>You don't have any groups yet. Go to the Create Group tab to add a group.</Text>
+              </View>
+            :              
+              groups.map((item) => {
+                return (
                   <ListItem
                     key={item.title}
                     containerStyle={{
@@ -47,6 +45,7 @@ const Groups = () => {
                       borderBottomWidth: 2,
                       borderBottomColor: '#332940',
                     }}
+                    onPress={() => {console.log(item.title)}}
                   >
                     <ListItem.Content>
                       <ListItem.Title
@@ -60,10 +59,10 @@ const Groups = () => {
                       >{item.title}</ListItem.Title>
                     </ListItem.Content>
                   </ListItem>
-                </ScrollView>
-              )
-            })       
-        }   
+                )
+              })       
+          } 
+        </ScrollView>  
 
       </View>
   )
@@ -78,7 +77,7 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    margin: '5%', 
+    margin: '5%',
     justifyContent: 'center',
     alignItems: 'center'
   },
