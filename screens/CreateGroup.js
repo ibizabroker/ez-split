@@ -699,6 +699,8 @@ export function CreateGroup() {
 					items={currencyList}
 					uniqueKey='abbreviation'
 					displayKey='currency'
+          modalWithSafeAreaView={true}
+					modalWithTouchable={true}
 					searchPlaceholderText="Search currencies..."
 					itemFontFamily={{ fontFamily: 'Montserrat' }}
 					searchTextFontFamily={{ fontFamily: 'Montserrat' }}
