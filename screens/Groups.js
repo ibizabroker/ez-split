@@ -1,11 +1,10 @@
 import { Text, View, StyleSheet, SafeAreaView } from 'react-native'
-import React, { Component } from 'react'
+import React, { useEffect } from 'react'
 import AppBar from '../components/AppBar';
 
-export class Groups extends Component {
-  render() {
-    return (
-      <View style={styles.containerInitial}>
+const Groups = () => {
+  return (
+    <View style={styles.containerInitial}>
         <AppBar ez={'EZ '} split={'Split'} />
 
         <SafeAreaView style={styles.container}>
@@ -13,9 +12,10 @@ export class Groups extends Component {
         </SafeAreaView>
 
       </View>
-    )
-  }
+  )
 }
+
+export default Groups
 
 const styles = StyleSheet.create({
   containerInitial: {
@@ -27,5 +27,3 @@ const styles = StyleSheet.create({
     margin: '5%',
   }
 });
-
-export default Groups

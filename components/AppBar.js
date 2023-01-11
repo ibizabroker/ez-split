@@ -1,21 +1,25 @@
-import { Appbar } from "react-native-paper";
+import * as React from "react";
+import { Header } from "@rneui/base";
 import { Text, StyleSheet } from "react-native";
 
 export default function AppBar(props) {
   return (
-    <Appbar.Header mode='center-aligned' style={{backgroundColor: '#332940'}} >
-      <Appbar.Content 
-        title={
-          <Text style={styles.ez} >
-            {props.ez}
-            <Text style={styles.split} >
-              {props.split}
-            </Text>
+    <Header
+      backgroundColor="#332940"
+      barStyle="default"
+      centerComponent={
+        <Text style={styles.ez} >
+          {props.ez}
+          <Text style={styles.split} >
+            {props.split}
           </Text>
-        } 
-      />
-    </Appbar.Header>
-  )  
+        </Text>
+      }
+      centerContainerStyle={{ padding: 5 }}
+      containerStyle={{ borderBottomWidth: 0 }}
+      placement="center"
+    />
+  );
 }
 
 const styles = StyleSheet.create({
