@@ -6,6 +6,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import Groups from "../screens/Groups";
 import CreateGroup from '../screens/CreateGroup';
+import GroupTabs from './GroupTabs';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -29,10 +30,10 @@ function GroupsStack() {
           blur: () => BackHandler.removeEventListener('hardwareBackPress',handleBackButton)
         }}
       />
-      {/* <Stack.Screen
-        name="Screen 2"
-        component={Screen2}
-      /> */}
+      <Stack.Screen
+        name="GroupTabs"
+        component={GroupTabs}
+      />
     </Stack.Navigator>
   );
 }

@@ -4,6 +4,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import AppBar from '../components/AppBar';
 import { useNavigation, useIsFocused } from '@react-navigation/native';
 import { ListItem } from '@rneui/themed';
+import TabGroups from '../components/GroupTabs'
 
 const Groups = () => {
   const isFocused = useIsFocused();
@@ -45,7 +46,10 @@ const Groups = () => {
                       borderBottomWidth: 2,
                       borderBottomColor: '#332940',
                     }}
-                    onPress={() => {console.log(item.title)}}
+                    onPress={() => {
+                      // console.log(item.title)
+                      navigation.navigate(TabGroups);                    
+                    }}
                   >
                     <ListItem.Content>
                       <ListItem.Title

@@ -1,6 +1,7 @@
 import useCachedResources from './hooks/UseCachedResources';
 
 import BottomNavigationBar from './components/BottomNavigationBar';
+import GroupTabs from './components/GroupTabs';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -17,6 +18,7 @@ function App() {
       <Stack.Navigator screenOptions={{headerShown: false}} >
 
         <Stack.Screen name="BottomNavigationBar" component={BottomNavigationBar} />
+        <Stack.Screen name="GroupTabs" component={GroupTabs} />
         
       </Stack.Navigator>
     );
@@ -25,7 +27,7 @@ function App() {
 
 export default () => {
   return (
-    <NavigationContainer>
+    <NavigationContainer theme={{ colors: { background: '#121212' } }}>
      <SafeAreaProvider>
         <App />
      </SafeAreaProvider>     
