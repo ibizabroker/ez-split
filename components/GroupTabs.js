@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
-import { Tab, Text, TabView } from '@rneui/themed';
+import { Tab, TabView } from '@rneui/themed';
 import AppBarWithBack from './AppBarWithBack';
+import Expenses from '../screens/Expenses';
+import Balances from '../screens/Balances';
+import Export from '../screens/Export';
 
-const GroupTabs = () => {
+const GroupTabs = ({ route }) => {
   const [index, setIndex] = useState(0);
+  const { group } = route.params;
 
   return (
     <>
@@ -55,13 +59,13 @@ const GroupTabs = () => {
         minSwipeSpeed={0.8}
       >
         <TabView.Item style={{ backgroundColor: '#121212', width: '100%' }}>
-          <Text h1>Expenses</Text>
+          <Expenses group={group}/>
         </TabView.Item>
         <TabView.Item style={{ backgroundColor: '#121212', width: '100%' }}>
-          <Text h1>Balances</Text>
+          <Balances group={group}/>
         </TabView.Item>
         <TabView.Item style={{ backgroundColor: '#121212', width: '100%' }}>
-          <Text h1>Export</Text>
+          <Export group={group}/>
         </TabView.Item>
       </TabView>
     </>

@@ -7,6 +7,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Groups from "../screens/Groups";
 import CreateGroup from '../screens/CreateGroup';
 import GroupTabs from './GroupTabs';
+import AddExpense from '../screens/AddExpense';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -33,6 +34,10 @@ function GroupsStack() {
       <Stack.Screen
         name="GroupTabs"
         component={GroupTabs}
+      />
+      <Stack.Screen
+        name="AddExpense"
+        component={AddExpense}
       />
     </Stack.Navigator>
   );

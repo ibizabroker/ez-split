@@ -2,6 +2,7 @@ import useCachedResources from './hooks/UseCachedResources';
 
 import BottomNavigationBar from './components/BottomNavigationBar';
 import GroupTabs from './components/GroupTabs';
+import AddExpense from './screens/AddExpense';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';

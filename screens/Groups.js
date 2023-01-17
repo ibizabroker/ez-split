@@ -1,10 +1,9 @@
-import { Text, View, StyleSheet, SafeAreaView, ScrollView } from 'react-native'
+import { Text, View, StyleSheet, ScrollView } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import AppBar from '../components/AppBar';
 import { useNavigation, useIsFocused } from '@react-navigation/native';
 import { ListItem } from '@rneui/themed';
-import TabGroups from '../components/GroupTabs'
 
 const Groups = () => {
   const isFocused = useIsFocused();
@@ -48,7 +47,7 @@ const Groups = () => {
                     }}
                     onPress={() => {
                       // console.log(item.title)
-                      navigation.navigate(TabGroups);                    
+                      navigation.navigate("GroupTabs", {group: item});               
                     }}
                   >
                     <ListItem.Content>
