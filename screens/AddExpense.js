@@ -12,36 +12,22 @@ export default function AddExpense({ route, navigation }) {
   navigation = useNavigation();
   const { group } = route.params;
 
-	const [title, setTitle] = useState("");
+	const [title, setTitle] = useState('');
   const [amount, setAmount] = useState(0);
-  const [currency, setCurrency] = useState([]);
   const [date, setDate] = useState(new Date());
   const [mode, setMode] = useState('date');
   const [show, setShow] = useState(false);
 	const [text, setText] = useState('');
   const [paidBy, setPaidBy] = useState('');
 	const [checked, setChecked] = useState({});
-	const [members, setMembers] = useState([]);
-	const [member, setMember] = useState("");
 	const [visible1, setVisible1] = useState(false);
 	const [visible2, setVisible2] = useState(false);
 	const [visible3, setVisible3] = useState(false);
-  const [visible4, setVisible4] = useState(false);
-
-	const getNameById = (value, list) => {
-		var i, len = list.length;
-
-		for (i = 0; i < len; i++) {
-			if (list[i] && list[i]["abbreviation"] == value) {
-				return list[i]["symbol"];
-			}
-		}
-
-		return -1;
-	}
+	const [visible4, setVisible4] = useState(false);
+	const [visible5, setVisible5] = useState(false);
+  const [visible6, setVisible6] = useState(false);
 
   const onChange = (event, selectedDate) => {
-		console.log(selectedDate);
 		const currentDate = selectedDate;
 		setShow(false);
 		setDate(currentDate);
@@ -53,6 +39,7 @@ export default function AddExpense({ route, navigation }) {
 		const out = dates.substring(0, index);
 
 		setText(out.split("-").reverse().join("-"));
+		console.log(text);
 	};
 
 	const showMode = (currentMode) => {
@@ -63,12 +50,6 @@ export default function AddExpense({ route, navigation }) {
 	const showDatepicker = () => {
 		showMode('date');
 	};
-
-	const deleteMember = (value) => {
-		setMembers(oldMembers => {
-			return oldMembers.filter(member => member !== value)
-		})
-	}
 
 	const toggleDialog1 = () => {
 		setVisible1(!visible1);
@@ -82,64 +63,97 @@ export default function AddExpense({ route, navigation }) {
 		setVisible3(!visible3);
 	};
 
-  const toggleDialog4 = () => {
+	const toggleDialog4 = () => {
 		setVisible4(!visible4);
 	};
 
+	const toggleDialog5 = () => {
+		setVisible5(!visible5);
+	};
+
+  const toggleDialog6 = () => {
+		setVisible6(!visible6);
+	};
+
 	const submitData = async () => {
-		// if (title === '' || currency === '' || members.length === 0) {
-		// 	toggleDialog1();
-		// }
-		// else if(members.length === 1) {
-		// 	toggleDialog2();
-		// }
-		// else {
-		// 	let currencySymbol = getNameById(currency[0], currencyList);
+		let participation = [];
+		for (let key in checked) {
+			if (checked.hasOwnProperty(key)) {
+				let val = checked[key];
+				if (val === true) {
+					participation.push(group.members[key]);
+				}
+			}
+		}
+		console.log(participation);
+		console.log(group)
+		// AsyncStorage.removeItem(group.title);
 
-		// 	try {
-		// 		const group = {
-		// 			title: title,
-		// 			currency: currencySymbol,
-		// 			members: members,
-		// 		}
-		// 		const array = [];
-		// 		// AsyncStorage.clear();
-		// 		await AsyncStorage.getItem('Groups')
-		// 			.then(async value => {
-		// 				if (value === null) {
-		// 					array.push(group);
-		// 					await AsyncStorage.setItem('Groups', JSON.stringify(array));
-    //           setTitle('');
-    //           setCurrency([]);
-    //           setMembers([]);
-		// 				}
-    //         else {
-    //           let arrayNew = JSON.parse(value);
-    //           if(arrayNew.some(i => i.title === title)) {
-    //             toggleDialog4();
-    //           }
-    //           else {
-    //             arrayNew.push(group);
-    //             await AsyncStorage.setItem('Groups', JSON.stringify(arrayNew));
-    //             setTitle('');
-    //             setCurrency([]);
-    //             setMembers([]);
-    //           }
-    //         }
-		// 		})
+		if (title === '') {
+			toggleDialog1();
+		}
+		else if(amount === 0) {
+			toggleDialog2();
+		}
+		else if(text === '') {
+			toggleDialog3();
+		}
+		else if(paidBy === '') {
+			toggleDialog4();
+		}
+		else if(participation.length === 0) {
+			toggleDialog5();
+		}
+		else {
+			try {
+				const expense = {
+					expenseTitle: title,
+					amount: amount,
+					date: text,
+					paidBy: paidBy,
+					participation: participation
+				}
+				const array = [];
 
-		// 		// await AsyncStorage.getItem('Groups')
-		// 		// 	.then(value => {
-		// 		// 		console.log("value2", JSON.parse(value));
-		// 		// })
+				await AsyncStorage.getItem(group.title)
+					.then(async value => {
+						if (value === null) {
+							array.push(expense);
+							await AsyncStorage.setItem(group.title, JSON.stringify(array));
+              setTitle('');
+              setAmount(0);
+              setText('');
+							setPaidBy('');
+							setChecked({});
+						}
+            else {
+              let arrayNew = JSON.parse(value);
+              if(arrayNew.some(i => i.expenseTitle === title)) {
+                toggleDialog6();
+              }
+              else {
+                arrayNew.push(expense);
+                await AsyncStorage.setItem(group.title, JSON.stringify(arrayNew));
+                setTitle('');
+								setAmount(0);
+								setText('');
+								setPaidBy('');
+								setChecked({});
+              }
+            }
+				})
+
+				await AsyncStorage.getItem(group.title)
+					.then(value => {
+						console.log("value", JSON.parse(value));
+				})
         
-		// 		navigation.navigate("Groups");
+				navigation.pop();
 
-		// 	} catch (error) {
-		// 		console.log(error);
-		// 	}
-		// }
-		console.log(checked);
+			} catch (error) {
+				console.log(error);
+			}
+		}
 	}
 
 	return (
@@ -302,47 +316,6 @@ export default function AddExpense({ route, navigation }) {
           statusBarTranslucent={true}
         />
 
-				{/* <View style={{flexDirection: 'row', justifyContent: 'space-evenly', marginTop: '5%'}}>
-					<Input
-						placeholder='Add Members'
-						placeholderTextColor='#808080'
-						selectionColor={'#808080'}
-						containerStyle={styles.containerStyleMembers}
-						inputContainerStyle={styles.inputContainerStyle}
-						inputStyle={styles.inputStyle}
-						value={member}
-						onChangeText={member => setMember(member)}
-					/>
-					<Button
-						title="Add"
-						titleStyle={{
-							fontFamily: 'Montserrat', 
-							fontSize: 16, 
-							color: '#D3D3D3'
-						}}
-						buttonStyle={{
-							borderRadius: 10,
-							height: 60,
-							width: 69,
-							backgroundColor: '#332940'
-						}}
-						disabled={member.length === 0 ? true : false}
-						disabledStyle={{
-							backgroundColor: '#808080',
-							color: '#D3D3D3'
-						}}
-						onPress={() => {
-							if(members.includes(member)) {
-								toggleDialog3();
-							}
-							else {
-								members.push(member); 
-							}							
-							setMember('')
-						}}
-					/>
-				</View> */}
-
 				<Text style={styles.participationText}>
 					Participation
 				</Text>
@@ -428,8 +401,8 @@ export default function AddExpense({ route, navigation }) {
 					onBackdropPress={toggleDialog1}
 					overlayStyle={{borderRadius: 10, backgroundColor: '#121212', borderWidth: 2, borderColor: '#332940'}}
 				>
-					<Text style={{fontFamily: 'Montserrat-SemiBold', fontSize: 18, marginBottom: 10, color: '#D3D3D3'}}>Bro?</Text>
-					<Text style={{fontFamily: 'Montserrat', color: '#D3D3D3'}}>Stop being lazy and fill everything.</Text>
+					<Text style={{fontFamily: 'Montserrat-SemiBold', fontSize: 18, marginBottom: 10, color: '#D3D3D3'}}>Yo</Text>
+					<Text style={{fontFamily: 'Montserrat', color: '#D3D3D3'}}>Adding a title to the expense will look good.</Text>
 					<Dialog.Actions>
 						<Dialog.Button title="OK" titleStyle={{fontFamily: 'Montserrat-Medium'}} onPress={() => toggleDialog1()}/>
 					</Dialog.Actions>
@@ -440,8 +413,8 @@ export default function AddExpense({ route, navigation }) {
 					onBackdropPress={toggleDialog2}
 					overlayStyle={{borderRadius: 10, backgroundColor: '#121212', borderWidth: 2, borderColor: '#332940'}}
 				>
-					<Text style={{fontFamily: 'Montserrat-SemiBold', fontSize: 18, marginBottom: 10, color: '#D3D3D3'}}>Loner Alert!</Text>
-					<Text style={{fontFamily: 'Montserrat', color: '#D3D3D3'}}>Add one more person.</Text>
+					<Text style={{fontFamily: 'Montserrat-SemiBold', fontSize: 18, marginBottom: 10, color: '#D3D3D3'}}>Hello?</Text>
+					<Text style={{fontFamily: 'Montserrat', color: '#D3D3D3'}}>An expense without an amount sounds kinda sus.</Text>
 					<Dialog.Actions>
 						<Dialog.Button title="OK" titleStyle={{fontFamily: 'Montserrat-Medium'}} onPress={() => toggleDialog2()}/>
 					</Dialog.Actions>
@@ -452,22 +425,46 @@ export default function AddExpense({ route, navigation }) {
 					onBackdropPress={toggleDialog3}
 					overlayStyle={{borderRadius: 10, backgroundColor: '#121212', borderWidth: 2, borderColor: '#332940'}}
 				>
-					<Text style={{fontFamily: 'Montserrat-SemiBold', fontSize: 18, marginBottom: 10, color: '#D3D3D3'}}>Hmmmm</Text>
-					<Text style={{fontFamily: 'Montserrat', color: '#D3D3D3'}}>Repeating the same name doesn't mean multiple friends.</Text>
+					<Text style={{fontFamily: 'Montserrat-SemiBold', fontSize: 18, marginBottom: 10, color: '#D3D3D3'}}>Come on</Text>
+					<Text style={{fontFamily: 'Montserrat', color: '#D3D3D3'}}>Is it that hard to fill in the date?</Text>
 					<Dialog.Actions>
 						<Dialog.Button title="OK" titleStyle={{fontFamily: 'Montserrat-Medium'}} onPress={() => toggleDialog3()}/>
 					</Dialog.Actions>
 				</Dialog>
 
-        <Dialog
+				<Dialog
 					isVisible={visible4}
 					onBackdropPress={toggleDialog4}
+					overlayStyle={{borderRadius: 10, backgroundColor: '#121212', borderWidth: 2, borderColor: '#332940'}}
+				>
+					<Text style={{fontFamily: 'Montserrat-SemiBold', fontSize: 18, marginBottom: 10, color: '#D3D3D3'}}>Who paid?</Text>
+					<Text style={{fontFamily: 'Montserrat', color: '#D3D3D3'}}>I know you didn't pay.</Text>
+					<Dialog.Actions>
+						<Dialog.Button title="OK" titleStyle={{fontFamily: 'Montserrat-Medium'}} onPress={() => toggleDialog4()}/>
+					</Dialog.Actions>
+				</Dialog>
+
+				<Dialog
+					isVisible={visible5}
+					onBackdropPress={toggleDialog5}
+					overlayStyle={{borderRadius: 10, backgroundColor: '#121212', borderWidth: 2, borderColor: '#332940'}}
+				>
+					<Text style={{fontFamily: 'Montserrat-SemiBold', fontSize: 18, marginBottom: 10, color: '#D3D3D3'}}>Huh</Text>
+					<Text style={{fontFamily: 'Montserrat', color: '#D3D3D3'}}>Who did you split it with?</Text>
+					<Dialog.Actions>
+						<Dialog.Button title="OK" titleStyle={{fontFamily: 'Montserrat-Medium'}} onPress={() => toggleDialog5()}/>
+					</Dialog.Actions>
+				</Dialog>
+
+        <Dialog
+					isVisible={visible6}
+					onBackdropPress={toggleDialog6}
 					overlayStyle={{borderRadius: 10, backgroundColor: '#121212', borderWidth: 2, borderColor: '#332940'}}
 				>
 					<Text style={{fontFamily: 'Montserrat-SemiBold', fontSize: 18, marginBottom: 10, color: '#D3D3D3'}}>Oops</Text>
 					<Text style={{fontFamily: 'Montserrat', color: '#D3D3D3'}}>You already used this title once.</Text>
 					<Dialog.Actions>
-						<Dialog.Button title="OK" titleStyle={{fontFamily: 'Montserrat-Medium'}} onPress={() => toggleDialog4()}/>
+						<Dialog.Button title="OK" titleStyle={{fontFamily: 'Montserrat-Medium'}} onPress={() => toggleDialog6()}/>
 					</Dialog.Actions>
 				</Dialog>
 			</SafeAreaView>
