@@ -54,13 +54,13 @@ export default function Expenses(props) {
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
         <Text style={styles.heading}>{group.title}</Text>
 
-        {expenses === null
+        {expenses === null || expenses.length === 0
           ?
             <></>
           :
             <Divider width={2.5} color='#332940' />
         }
-        {expenses === null 
+        {expenses === null || expenses.length === 0
           ? 
             <View style={styles.containerText}>
               <Text style={styles.noExpensesText}>You don't have any expenses added to this group yet. Click on the Add Expense button below to proceed.</Text>
