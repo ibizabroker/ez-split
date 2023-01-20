@@ -39,7 +39,6 @@ export default function AddExpense({ route, navigation }) {
 		const out = dates.substring(0, index);
 
 		setText(out.split("-").reverse().join("-"));
-		console.log(text);
 	};
 
 	const showMode = (currentMode) => {
@@ -85,8 +84,6 @@ export default function AddExpense({ route, navigation }) {
 				}
 			}
 		}
-		console.log(participation);
-		console.log(group)
 		// AsyncStorage.removeItem(group.title);
 
 		if (title === '') {
@@ -125,6 +122,7 @@ export default function AddExpense({ route, navigation }) {
               setText('');
 							setPaidBy('');
 							setChecked({});
+							navigation.pop();
 						}
             else {
               let arrayNew = JSON.parse(value);
@@ -139,17 +137,16 @@ export default function AddExpense({ route, navigation }) {
 								setText('');
 								setPaidBy('');
 								setChecked({});
+								navigation.pop();
               }
             }
 				})
 
-				await AsyncStorage.getItem(group.title)
-					.then(value => {
-						console.log("value", JSON.parse(value));
-				})
+				// await AsyncStorage.getItem(group.title)
+				// 	.then(value => {
+				// 		console.log("value", JSON.parse(value));
+				// })
         
-				navigation.pop();
-
 			} catch (error) {
 				console.log(error);
 			}

@@ -647,6 +647,7 @@ export function CreateGroup() {
               setTitle('');
               setCurrency([]);
               setMembers([]);
+              navigation.navigate("Groups");
 						}
             else {
               let arrayNew = JSON.parse(value);
@@ -659,6 +660,7 @@ export function CreateGroup() {
                 setTitle('');
                 setCurrency([]);
                 setMembers([]);
+                navigation.navigate("Groups");
               }
             }
 				})
@@ -668,7 +670,6 @@ export function CreateGroup() {
 				// 		console.log("value2", JSON.parse(value));
 				// })
         
-				navigation.navigate("Groups");
 
 			} catch (error) {
 				console.log(error);
