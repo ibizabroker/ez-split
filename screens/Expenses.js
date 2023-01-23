@@ -78,9 +78,7 @@ export default function Expenses(props) {
                   onLongPress={() => {
                     setDeleteKey(group.title);
                     setDeleteValue(item);
-                    toggleDialog();
-                    // removeJSON(group.title, item);
-                    // navigation.navigate("GroupTabs", {group: item});               
+                    toggleDialog();              
                   }}
                 >
                   <View style={styles.listContainer}>
