@@ -231,7 +231,10 @@ export default function AddExpense({ route, navigation }) {
             color: text === '' ? '#808080': '#D3D3D3',
           }}
           iconPosition='right'
-					onPress={showDatepicker}
+					onPress={() => {
+						Keyboard.dismiss();
+						showDatepicker();
+					}}
 				/>
         {show && (
           <DateTimePicker
@@ -259,6 +262,9 @@ export default function AddExpense({ route, navigation }) {
           rowTextForSelection={(item, index) => {
             return item
           }}
+					onFocus={() => {
+						Keyboard.dismiss();
+					}}
           buttonStyle={{
             alignSelf: 'center',
 						borderWidth: 2,
