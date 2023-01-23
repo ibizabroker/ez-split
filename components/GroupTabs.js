@@ -161,7 +161,6 @@ const GroupTabs = ({ route }) => {
           <Balances 
             group={group}
             totalGroupExpense={totalGroupExpense}
-            expensesPerPerson={expensesPerPerson}
             expensesPerPersonTotal={expensesPerPersonTotal}
             balances={balances}
             fetchData={fetchData}

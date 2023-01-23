@@ -6,7 +6,6 @@ export default function Balances(props) {
   const group = props.group;
   const fetchData = props.fetchData;
   const totalGroupExpense = props.totalGroupExpense;
-  const expensesPerPerson = props.expensesPerPerson;
   const balances = props.balances;
   const expensesPerPersonTotal = props.expensesPerPersonTotal;
 
