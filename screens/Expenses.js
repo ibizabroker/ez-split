@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, ScrollView, Dimensions } from 'react-native'
+import { View, Text, StyleSheet, ScrollView } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import { ListItem, Divider, Button, Dialog } from '@rneui/themed';
 import { useNavigation, useIsFocused } from '@react-navigation/native';
@@ -6,6 +6,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function Expenses(props) {
   const group = props.group;
+  const fetchDataBalances = props.fetchDataBalances;
 
   const navigation = useNavigation();
   const isFocused = useIsFocused();
@@ -35,14 +36,13 @@ export default function Expenses(props) {
 
   const removeJSON = async (key, value) => {
     try {
-        console.log(value);
-        console.log(key);
         const jsonArray = await AsyncStorage.getItem(key);
         let parsedArray = JSON.parse(jsonArray);
         parsedArray = parsedArray.filter(item => !(item.expenseTitle === value.expenseTitle));
 
         await AsyncStorage.setItem(key, JSON.stringify(parsedArray));
         fetchData();
+        fetchDataBalances();
         toggleDialog();
     } catch (error) {
         console.log(error);
@@ -84,7 +84,7 @@ export default function Expenses(props) {
                   }}
                 >
                   <View style={styles.listContainer}>
-                    <View style={{marginLeft: '5%'}}>
+                    <View style={{marginLeft: '5%', width: '60%'}}>
                       <ListItem.Title
                         style={{
                           fontFamily: 'Montserrat',
