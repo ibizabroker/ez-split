@@ -68,7 +68,7 @@ const GroupTabs = ({ route }) => {
     const tempExpensesPerPersonTotal = tempExpenses.map(person => {
       const key = Object.keys(person)[0];
       const values = person[key];
-      const total = values.reduce((a, b) => a + b, 0);
+      const total = parseFloat(values.reduce((a, b) => a + b, 0).toFixed(2));
       return { [key]: [total] };
     });
     setExpensesPerPersonTotal(tempExpensesPerPersonTotal);    
