@@ -1,6 +1,8 @@
 import { View, Text, StyleSheet, ScrollView } from 'react-native'
 import React, { useEffect } from 'react'
 import { useIsFocused } from '@react-navigation/native';
+import { captureRef } from 'react-native-view-shot';
+import * as Sharing from 'expo-sharing';
 
 export default function Balances(props) {
   const group = props.group;
@@ -19,50 +21,71 @@ export default function Balances(props) {
 
   return (
     <View style={styles.container}>
-      <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-        <Text style={styles.heading}>{group.title}</Text>
-        <Text style={styles.text}>Total money spent by the group: 
-          <Text style={styles.textColor}> {group.currency}{totalGroupExpense}</Text>
-        </Text>
-        {
-          expensesPerPersonTotal.map(person => {
-            const key = Object.keys(person)[0];
-            return (
-              <Text key={`${key}-1`} style={styles.text}>
-                {key}
-                <Text key={`${key}-2`} style={styles.textColor}>
-                  {person[key] > 0 ? ' receives ' : ' owes '}
-                </Text>
-                {group.currency}{Math.abs(person[key])}
-              </Text>
-            );
-          })
-        }
-        <Text style={styles.summary}>Summary</Text>
-        {balances === null || balances.length === 0
-          ?
-            <Text style={styles.text}>It looks like your expenses tab is empty.</Text>
-          :
-            balances.map((balance, index) => {
-              const key = `${balance.person}${balance.personToPay}${balance.payment}`;
+      <ScrollView 
+        contentContainerStyle={{ flexGrow: 1 }}
+      >
+        <View
+          collapsable={false}
+          ref={(view) => {this.captureBalances = view}}
+        >
+          <Text style={styles.heading}>{group.title}</Text>
+          <Text style={styles.text}>Total money spent by the group: 
+            <Text style={styles.textColor}> {group.currency}{totalGroupExpense}</Text>
+          </Text>
+          {
+            expensesPerPersonTotal.map(person => {
+              const key = Object.keys(person)[0];
               return (
                 <Text key={`${key}-1`} style={styles.text}>
-                  <Text key={`${key}-2`} style={styles.textColor}>{balance.person} </Text>
-                  pays 
-                  <Text key={`${key}-3`} style={styles.textColor}> {balance.personToPay} </Text>
-                  {group.currency}{balance.payment}
+                  {key}
+                  <Text key={`${key}-2`} style={styles.textColor}>
+                    {person[key] > 0 ? ' receives ' : ' owes '}
+                  </Text>
+                  {group.currency}{Math.abs(person[key])}
                 </Text>
-              )
+              );
             })
-        }
+          }
+          <Text style={styles.summary}>Summary</Text>
+          {balances === null || balances.length === 0
+            ?
+              <Text style={styles.text}>It looks like your expenses tab is empty.</Text>
+            :
+              balances.map((balance, index) => {
+                const key = `${balance.person}${balance.personToPay}${balance.payment}`;
+                return (
+                  <Text key={`${key}-1`} style={styles.text}>
+                    <Text key={`${key}-2`} style={styles.textColor}>{balance.person} </Text>
+                    pays 
+                    <Text key={`${key}-3`} style={styles.textColor}> {balance.personToPay} </Text>
+                    {group.currency}{balance.payment}
+                  </Text>
+                )
+              })
+          }
+        </View>
       </ScrollView>
     </View>
   )
 }
 
+export const onCapture = (ref) => {
+  captureRef(ref, {
+    format: "png",
+    quality: 1,
+    result: "tmpfile"
+  }).then(
+    uri => {
+      Sharing.shareAsync('file://' + uri);
+    },
+    error => console.error('Export failed', error)
+  );
+}
+
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    marginBottom: '5%'
   },
   heading: {
     fontFamily: 'Montserrat-Medium',
