@@ -131,27 +131,40 @@ export default function Expenses(props) {
               )
             })       
           } 
+          <ListItem
+            containerStyle={{
+              backgroundColor: '#121212',
+            }}
+          >
+            <ListItem.Content>
+              <ListItem.Title />
+              <ListItem.Subtitle />
+              <ListItem.Subtitle />
+            </ListItem.Content>
+          </ListItem>
       </ScrollView>
 
       <Button 
-					title="Add Expense"
-					titleStyle={{
-						fontFamily: 'Montserrat', 
-						fontSize: 16, 
-						color: '#D3D3D3'
-					}}
-					buttonStyle={{
-						marginTop: 30,
-						alignSelf: 'flex-end',
-						borderRadius: 10,
-            paddingHorizontal: 20,
-            paddingVertical: 15,
-						bottom: 25,
-						right: 25,
-						backgroundColor: '#332940'
-					}}
-					onPress={() => {navigation.navigate("AddExpense", {group: group})}}
-				/>
+        title="Add Expense"
+        titleStyle={{
+          fontFamily: 'Montserrat', 
+          fontSize: 16, 
+          color: '#D3D3D3'
+        }}
+        buttonStyle={{
+          width: 150,
+          borderRadius: 10,
+          paddingHorizontal: 20,
+          paddingVertical: 15,
+          backgroundColor: '#332940'
+        }}
+        containerStyle={{
+          bottom: 25,
+          right: 25,
+          position: 'absolute',
+        }}
+        onPress={() => {navigation.navigate("AddExpense", {group: group})}}
+			/>
 
       <Dialog
         isVisible={visible}
