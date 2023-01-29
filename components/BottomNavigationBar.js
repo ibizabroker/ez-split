@@ -8,6 +8,7 @@ import Groups from "../screens/Groups";
 import CreateGroup from '../screens/CreateGroup';
 import GroupTabs from './GroupTabs';
 import AddExpense from '../screens/AddExpense';
+import ExpenseDetails from '../screens/ExpenseDetails';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -38,6 +39,10 @@ function GroupsStack() {
       <Stack.Screen
         name="AddExpense"
         component={AddExpense}
+      />
+      <Stack.Screen
+        name="ExpenseDetails"
+        component={ExpenseDetails}
       />
     </Stack.Navigator>
   );

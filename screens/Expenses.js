@@ -12,13 +12,6 @@ export default function Expenses(props) {
   const isFocused = useIsFocused();
 
   const [expenses, setExpenses] = useState([]);
-  const [deleteKey, setDeleteKey] = useState('');
-  const [deleteValue, setDeleteValue] = useState({});
-	const [visible, setVisible] = useState(false);
-
-  const toggleDialog = () => {
-		setVisible(!visible);
-	};
 
   const fetchData = async () => {
      await AsyncStorage.getItem(group.title)
@@ -31,23 +24,9 @@ export default function Expenses(props) {
   useEffect(() => {
     if(isFocused) {
       fetchData();
+      fetchDataBalances();
     }
   }, [isFocused])
-
-  const removeJSON = async (key, value) => {
-    try {
-        const jsonArray = await AsyncStorage.getItem(key);
-        let parsedArray = JSON.parse(jsonArray);
-        parsedArray = parsedArray.filter(item => !(item.expenseTitle === value.expenseTitle));
-
-        await AsyncStorage.setItem(key, JSON.stringify(parsedArray));
-        fetchData();
-        fetchDataBalances();
-        toggleDialog();
-    } catch (error) {
-        console.log(error);
-    }
-  }
 
   return (
     <View style={styles.container}>
@@ -75,10 +54,8 @@ export default function Expenses(props) {
                     borderBottomWidth: 2,
                     borderBottomColor: '#332940',
                   }}
-                  onLongPress={() => {
-                    setDeleteKey(group.title);
-                    setDeleteValue(item);
-                    toggleDialog();              
+                  onPress={() => {
+                    navigation.navigate("ExpenseDetails", {expense: item, group});
                   }}
                 >
                   <View style={styles.listContainer}>
@@ -165,19 +142,6 @@ export default function Expenses(props) {
         }}
         onPress={() => {navigation.navigate("AddExpense", {group: group})}}
 			/>
-
-      <Dialog
-        isVisible={visible}
-        onBackdropPress={toggleDialog}
-        overlayStyle={{borderRadius: 10, backgroundColor: '#121212', borderWidth: 2, borderColor: '#332940'}}
-      >
-        <Text style={{fontFamily: 'Montserrat-SemiBold', fontSize: 18, marginBottom: 10, color: '#D3D3D3'}}>Delete?</Text>
-				<Text style={{fontFamily: 'Montserrat', color: '#D3D3D3'}}>Are you sure you want to delete this expense?</Text>
-        <Dialog.Actions>
-          <Dialog.Button title="No, go back" titleStyle={{fontFamily: 'Montserrat-Medium'}} onPress={() => toggleDialog()}/>
-          <Dialog.Button title="Yes" titleStyle={{fontFamily: 'Montserrat-Medium', color: 'red'}} onPress={() => removeJSON(deleteKey, deleteValue)}/>
-        </Dialog.Actions>
-      </Dialog>
     </View>
   )
 }

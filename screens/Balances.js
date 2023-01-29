@@ -36,6 +36,7 @@ export default function Balances(props) {
           {
             expensesPerPersonTotal.map(person => {
               const key = Object.keys(person)[0];
+              if(person[key] === 0) return null;
               return (
                 <Text key={`${key}-1`} style={styles.text}>
                   {key}
