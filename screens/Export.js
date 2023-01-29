@@ -8,13 +8,11 @@ import * as Sharing from 'expo-sharing';
 
 export default function Export(props) {
   const group = props.group;
-  const expensesPerPersonTotal = props.expensesPerPersonTotal;
   const jsonForExcel = props.jsonForExcel;
 
   const generateExcel = () => {
     const wb = XLSX.utils.book_new();
     const ws = XLSX.utils.json_to_sheet(jsonForExcel);
-    // XLSX.utils.sheet_add_json(ws, expensesPerPersonTotal, { skipHeader: true, origin: "A" + (jsonForExcel.length + 3) });
     XLSX.utils.book_append_sheet(wb, ws, "Expenses");
     const file = XLSX.write(wb, { type: "base64", bookType: 'xlsx' });
     const filename = FileSystem.documentDirectory + `${group.title} Expenses.xlsx`;

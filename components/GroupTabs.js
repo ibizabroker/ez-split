@@ -188,7 +188,6 @@ const GroupTabs = ({ route }) => {
         <TabView.Item style={{ backgroundColor: '#121212', width: '100%' }}>
           <Export 
             group={group}
-            expensesPerPersonTotal={expensesPerPersonTotal}
             jsonForExcel={jsonForExcel}
           />
         </TabView.Item>
