@@ -16,6 +16,7 @@
     "@react-navigation/stack": "^6.3.10",
     "@rneui/themed": "^4.0.0-rc.7",
     "expo": "~47.0.8",
+    "expo-file-system": "^15.1.1",
     "expo-font": "^11.0.1",
     "expo-sharing": "^11.0.1",
     "expo-splash-screen": "^0.17.5",
@@ -26,7 +27,8 @@
     "react-native-safe-area-context": "^4.4.1",
     "react-native-sectioned-multi-select": "^0.9.1",
     "react-native-select-dropdown": "^3.2.1",
-    "react-native-view-shot": "3.4.0"
+    "react-native-view-shot": "3.4.0",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

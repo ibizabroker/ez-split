@@ -11,9 +11,9 @@ const GroupTabs = ({ route }) => {
   const { group } = route.params;
 
   const [totalGroupExpense, setTotalGroupExpense] = useState(0);
-  const [expensesPerPerson, setExpensesPerPerson] = useState([]);
   const [balances, setBalances] = useState([]);
   const [expensesPerPersonTotal, setExpensesPerPersonTotal] = useState([]);
+  const [jsonForExcel, setJsonForExcel] = useState([]);
 
   const fetchData = async () => {
     await AsyncStorage.getItem(group.title)
@@ -39,39 +39,58 @@ const GroupTabs = ({ route }) => {
   const generateExpensesAndPayments = (expenses) => {
     let tempExpenses = [];
     expenses.forEach(event => {
-        let amountPerPerson = event.amount / event.participation.length;
-        event.participation.forEach(person => {
-            let expense = tempExpenses.find(e => Object.keys(e)[0] === person);
-            if (!expense) {
-                expense = { [person]: [] };
-                tempExpenses.push(expense);
-            }
-            expense[person].push(person === event.paidBy ? amountPerPerson*(event.participation.length-1) : -amountPerPerson);
-        });
-        tempExpenses.forEach(expense => {
-            let person = Object.keys(expense)[0];
-            expense[person] = expense[person].map(val => parseFloat(val.toFixed(2)));
-            if(!event.participation.includes(person)) expense[person].push(0);
-        });
-        if(!event.participation.includes(event.paidBy)) {
-            let expense = tempExpenses.find(e => Object.keys(e)[0] === event.paidBy);
-            if (!expense) {
-                expense = { [event.paidBy]: [] };
-                tempExpenses.push(expense);
-            }
-            expense[event.paidBy].push(event.amount);
+      let amountPerPerson = event.amount / event.participation.length;
+      group.members.forEach(person => {
+        let expense = tempExpenses.find(e => Object.keys(e)[0] === person);
+        if (!expense) {
+            expense = { [person]: [] };
+            tempExpenses.push(expense);
         }
+      });
+      tempExpenses.forEach(expense => {
+        let person = Object.keys(expense)[0];
+        if(!event.participation.includes(person)) {
+          expense[person].push(person === event.paidBy ? parseFloat(event.amount) : 0);
+        }
+        else {
+          expense[person].push(person === event.paidBy ? amountPerPerson*(event.participation.length-1) : -amountPerPerson);
+        }
+        expense[person] = expense[person].map(val => parseFloat(val.toFixed(2)));
+      });
     });
-
-    setExpensesPerPerson(tempExpenses);
 
     const tempExpensesPerPersonTotal = tempExpenses.map(person => {
       const key = Object.keys(person)[0];
       const values = person[key];
-      const total = parseFloat(values.reduce((a, b) => a + b, 0).toFixed(2));
-      return { [key]: [total] };
+      let total = values.reduce((a, b) => a + b, 0);
+      total = parseFloat(total.toFixed(2));
+      return { [key]: total };
     });
-    setExpensesPerPersonTotal(tempExpensesPerPersonTotal);    
+
+    setExpensesPerPersonTotal(tempExpensesPerPersonTotal);
+
+    let json1 = expenses;
+    let json2 = tempExpenses;
+    let json3 = tempExpensesPerPersonTotal;
+    for (let i = 0; i < json1.length; i++) {
+      for (let j = 0; j < json2.length; j++) {
+        const key = Object.keys(json2[j])[0];
+        json1[i][key] = json2[j][key][i];
+      }
+    }
+
+    let json = json1.map(expense => {
+      const { participation, ...newExpense } = expense;
+      return newExpense;
+    });
+
+    let json4 = json3.reduce(function(acc, curr) {
+      return Object.assign(acc, curr);
+    });
+    json4 = Object.assign(json4, {"paidBy": "total"});
+    json.push(json4);
+
+    setJsonForExcel(json);
 
     let payments = [];
     let tempExpensesPerPerson = {};
@@ -167,7 +186,11 @@ const GroupTabs = ({ route }) => {
           />
         </TabView.Item>
         <TabView.Item style={{ backgroundColor: '#121212', width: '100%' }}>
-          <Export group={group}/>
+          <Export 
+            group={group}
+            expensesPerPersonTotal={expensesPerPersonTotal}
+            jsonForExcel={jsonForExcel}
+          />
         </TabView.Item>
       </TabView>
     </>

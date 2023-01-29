@@ -2,9 +2,28 @@ import { View, Text, StyleSheet, ScrollView } from 'react-native'
 import React from 'react'
 import { ListItem, Divider } from '@rneui/themed';
 import { onCapture } from './Balances';
+import * as XLSX from 'xlsx';
+import * as FileSystem from 'expo-file-system';
+import * as Sharing from 'expo-sharing';
 
 export default function Export(props) {
   const group = props.group;
+  const expensesPerPersonTotal = props.expensesPerPersonTotal;
+  const jsonForExcel = props.jsonForExcel;
+
+  const generateExcel = () => {
+    const wb = XLSX.utils.book_new();
+    const ws = XLSX.utils.json_to_sheet(jsonForExcel);
+    // XLSX.utils.sheet_add_json(ws, expensesPerPersonTotal, { skipHeader: true, origin: "A" + (jsonForExcel.length + 3) });
+    XLSX.utils.book_append_sheet(wb, ws, "Expenses");
+    const file = XLSX.write(wb, { type: "base64", bookType: 'xlsx' });
+    const filename = FileSystem.documentDirectory + `${group.title} Expenses.xlsx`;
+    FileSystem.writeAsStringAsync(filename, file, {
+      encoding: FileSystem.EncodingType.Base64
+    }).then(() => {
+      Sharing.shareAsync(filename);
+    });
+  }
 
   return (
     <ScrollView contentContainerStyle={{flexGrow: 1}}>
@@ -39,9 +58,7 @@ export default function Export(props) {
             borderBottomWidth: 2,
             borderBottomColor: '#332940',
           }}
-          onPress={() => {
-            console.log('CSV')             
-          }}
+          onPress={generateExcel}
         >
           <ListItem.Content>
             <ListItem.Title
@@ -53,7 +70,7 @@ export default function Export(props) {
                 marginLeft: '5%'
               }}
             >
-              CSV
+              Excel
             </ListItem.Title>
           </ListItem.Content>
         </ListItem>

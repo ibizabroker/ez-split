@@ -3,6 +3,7 @@ import React, { useEffect } from 'react'
 import { useIsFocused } from '@react-navigation/native';
 import { captureRef } from 'react-native-view-shot';
 import * as Sharing from 'expo-sharing';
+import * as FileSystem from 'expo-file-system';
 
 export default function Balances(props) {
   const group = props.group;
@@ -76,7 +77,14 @@ export const onCapture = (ref) => {
     result: "tmpfile"
   }).then(
     uri => {
-      Sharing.shareAsync('file://' + uri);
+      let uriArray = uri.split("/");
+      let nameToChange = uriArray[uriArray.length - 1];
+      let renamedURI = uri.replace(
+        nameToChange, "Expenses.png"
+      );
+      FileSystem.copyAsync({from: uri, to: renamedURI}).then(() => {
+        Sharing.shareAsync('file://' + renamedURI);
+      })
     },
     error => console.error('Export failed', error)
   );
