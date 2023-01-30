@@ -166,7 +166,8 @@ const GroupTabs = ({ route }) => {
       <TabView 
         value={index} 
         onChange={setIndex} 
-        animationType="timing"
+        animationType="spring"
+        springConfig={{ overshootClamping: 1 }}
         minSwipeRatio={0.2}
         minSwipeSpeed={0.8}
       >

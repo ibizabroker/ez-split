@@ -28,7 +28,8 @@
     "react-native-sectioned-multi-select": "^0.9.1",
     "react-native-select-dropdown": "^3.2.1",
     "react-native-view-shot": "3.4.0",
-    "xlsx": "^0.18.5"
+    "xlsx": "^0.18.5",
+    "expo-updates": "~0.15.6"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

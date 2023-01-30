@@ -320,7 +320,7 @@ export default function AddExpense({ route, navigation }) {
         />
 
 				<Text style={styles.participationText}>
-					Participation
+					Participants
 				</Text>
 				<ScrollView>
 						{
