@@ -7,6 +7,7 @@ import SelectDropdown from 'react-native-select-dropdown';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { RFValue } from "react-native-responsive-fontsize";
 
 export default function AddExpense({ route, navigation }) {
   navigation = useNavigation();
@@ -176,7 +177,7 @@ export default function AddExpense({ route, navigation }) {
 						title={group.currency}
 						titleStyle={{
 							fontFamily: 'Montserrat', 
-							fontSize: 17, 
+							fontSize: RFValue(15.5), 
 							color: '#D3D3D3'
 						}}
 						buttonStyle={{
@@ -210,7 +211,7 @@ export default function AddExpense({ route, navigation }) {
           type={'outlined'}
 					titleStyle={{
 						fontFamily: 'Montserrat', 
-						fontSize: 16, 
+						fontSize: RFValue(14.5), 
 						color: text === '' ? '#808080': '#D3D3D3',
             marginLeft: 10
 					}}
@@ -277,7 +278,7 @@ export default function AddExpense({ route, navigation }) {
           }}
           buttonTextStyle={{
             fontFamily: 'Montserrat', 
-						fontSize: 16, 
+						fontSize: RFValue(14.5), 
 						color: paidBy === '' ? '#808080': '#D3D3D3',
             textAlign: 'left',
             marginLeft: 12
@@ -295,7 +296,7 @@ export default function AddExpense({ route, navigation }) {
           }}
           rowTextStyle={{
             fontFamily: 'Montserrat', 
-						fontSize: 16, 
+						fontSize: RFValue(14.5), 
 						color: '#D3D3D3',
           }}
           search={true}
@@ -307,7 +308,7 @@ export default function AddExpense({ route, navigation }) {
           }}
           searchInputTxtStyle={{
             fontFamily: 'Montserrat', 
-						fontSize: 16, 
+						fontSize: RFValue(14.5), 
 						color: '#D3D3D3',
           }}
           searchInputTxtColor='#D3D3D3'
@@ -367,7 +368,7 @@ export default function AddExpense({ route, navigation }) {
                       <ListItem.Title
                         style={{
                           fontFamily: 'Montserrat',
-                          fontSize: 16,
+                          fontSize: RFValue(14.5),
                           color: '#D3D3D3',
                           marginLeft: '5%'
                         }}
@@ -385,7 +386,7 @@ export default function AddExpense({ route, navigation }) {
 					title="Submit"
 					titleStyle={{
 						fontFamily: 'Montserrat', 
-						fontSize: 16, 
+						fontSize: RFValue(14.5), 
 						color: '#D3D3D3'
 					}}
 					buttonStyle={{
@@ -404,7 +405,7 @@ export default function AddExpense({ route, navigation }) {
 					onBackdropPress={toggleDialog1}
 					overlayStyle={{borderRadius: 10, backgroundColor: '#121212', borderWidth: 2, borderColor: '#332940'}}
 				>
-					<Text style={{fontFamily: 'Montserrat-SemiBold', fontSize: 18, marginBottom: 10, color: '#D3D3D3'}}>Yo</Text>
+					<Text style={{fontFamily: 'Montserrat-SemiBold', fontSize: RFValue(16.5), marginBottom: 10, color: '#D3D3D3'}}>Yo</Text>
 					<Text style={{fontFamily: 'Montserrat', color: '#D3D3D3'}}>Adding a title to the expense will look good.</Text>
 					<Dialog.Actions>
 						<Dialog.Button title="OK" titleStyle={{fontFamily: 'Montserrat-Medium'}} onPress={() => toggleDialog1()}/>
@@ -416,7 +417,7 @@ export default function AddExpense({ route, navigation }) {
 					onBackdropPress={toggleDialog2}
 					overlayStyle={{borderRadius: 10, backgroundColor: '#121212', borderWidth: 2, borderColor: '#332940'}}
 				>
-					<Text style={{fontFamily: 'Montserrat-SemiBold', fontSize: 18, marginBottom: 10, color: '#D3D3D3'}}>Hello?</Text>
+					<Text style={{fontFamily: 'Montserrat-SemiBold', fontSize: RFValue(16.5), marginBottom: 10, color: '#D3D3D3'}}>Hello?</Text>
 					<Text style={{fontFamily: 'Montserrat', color: '#D3D3D3'}}>An expense without an amount sounds kinda sus.</Text>
 					<Dialog.Actions>
 						<Dialog.Button title="OK" titleStyle={{fontFamily: 'Montserrat-Medium'}} onPress={() => toggleDialog2()}/>
@@ -428,7 +429,7 @@ export default function AddExpense({ route, navigation }) {
 					onBackdropPress={toggleDialog3}
 					overlayStyle={{borderRadius: 10, backgroundColor: '#121212', borderWidth: 2, borderColor: '#332940'}}
 				>
-					<Text style={{fontFamily: 'Montserrat-SemiBold', fontSize: 18, marginBottom: 10, color: '#D3D3D3'}}>Come on</Text>
+					<Text style={{fontFamily: 'Montserrat-SemiBold', fontSize: RFValue(16.5), marginBottom: 10, color: '#D3D3D3'}}>Come on</Text>
 					<Text style={{fontFamily: 'Montserrat', color: '#D3D3D3'}}>Is it that hard to fill in the date?</Text>
 					<Dialog.Actions>
 						<Dialog.Button title="OK" titleStyle={{fontFamily: 'Montserrat-Medium'}} onPress={() => toggleDialog3()}/>
@@ -440,7 +441,7 @@ export default function AddExpense({ route, navigation }) {
 					onBackdropPress={toggleDialog4}
 					overlayStyle={{borderRadius: 10, backgroundColor: '#121212', borderWidth: 2, borderColor: '#332940'}}
 				>
-					<Text style={{fontFamily: 'Montserrat-SemiBold', fontSize: 18, marginBottom: 10, color: '#D3D3D3'}}>Who paid?</Text>
+					<Text style={{fontFamily: 'Montserrat-SemiBold', fontSize: RFValue(16.5), marginBottom: 10, color: '#D3D3D3'}}>Who paid?</Text>
 					<Text style={{fontFamily: 'Montserrat', color: '#D3D3D3'}}>I know you didn't pay.</Text>
 					<Dialog.Actions>
 						<Dialog.Button title="OK" titleStyle={{fontFamily: 'Montserrat-Medium'}} onPress={() => toggleDialog4()}/>
@@ -452,7 +453,7 @@ export default function AddExpense({ route, navigation }) {
 					onBackdropPress={toggleDialog5}
 					overlayStyle={{borderRadius: 10, backgroundColor: '#121212', borderWidth: 2, borderColor: '#332940'}}
 				>
-					<Text style={{fontFamily: 'Montserrat-SemiBold', fontSize: 18, marginBottom: 10, color: '#D3D3D3'}}>Huh</Text>
+					<Text style={{fontFamily: 'Montserrat-SemiBold', fontSize: RFValue(16.5), marginBottom: 10, color: '#D3D3D3'}}>Huh</Text>
 					<Text style={{fontFamily: 'Montserrat', color: '#D3D3D3'}}>Who did you split it with?</Text>
 					<Dialog.Actions>
 						<Dialog.Button title="OK" titleStyle={{fontFamily: 'Montserrat-Medium'}} onPress={() => toggleDialog5()}/>
@@ -464,7 +465,7 @@ export default function AddExpense({ route, navigation }) {
 					onBackdropPress={toggleDialog6}
 					overlayStyle={{borderRadius: 10, backgroundColor: '#121212', borderWidth: 2, borderColor: '#332940'}}
 				>
-					<Text style={{fontFamily: 'Montserrat-SemiBold', fontSize: 18, marginBottom: 10, color: '#D3D3D3'}}>Oops</Text>
+					<Text style={{fontFamily: 'Montserrat-SemiBold', fontSize: RFValue(16.5), marginBottom: 10, color: '#D3D3D3'}}>Oops</Text>
 					<Text style={{fontFamily: 'Montserrat', color: '#D3D3D3'}}>You already used this title once.</Text>
 					<Dialog.Actions>
 						<Dialog.Button title="OK" titleStyle={{fontFamily: 'Montserrat-Medium'}} onPress={() => toggleDialog6()}/>
@@ -512,13 +513,13 @@ const styles = StyleSheet.create({
   inputStyle: {
     marginLeft: 10,
     fontFamily: 'Montserrat', 
-    fontSize: 16,
+    fontSize: RFValue(14.5),
     color: '#D3D3D3',
     paddingBottom: 4,
   },
 	participationText: {
 		fontFamily: 'Montserrat-Medium',
-		fontSize: 16,
+		fontSize: RFValue(14.5),
 		color: '#D3D3D3',
 		marginLeft: '10%',
 		marginTop: '8%',

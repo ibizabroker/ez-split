@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Header } from "@rneui/base";
 import { Text, StyleSheet } from "react-native";
+import { RFValue } from "react-native-responsive-fontsize";
 
 export default function AppBar(props) {
   return (
@@ -25,12 +26,12 @@ export default function AppBar(props) {
 const styles = StyleSheet.create({
   ez: {
     fontFamily: 'Montserrat-SemiBold',
-    fontSize: 26,
+    fontSize: RFValue(24.5),
     color:'#FC4949'
   },
   split: {
     fontFamily: 'Montserrat-SemiBold',
-    fontSize: 26,
+    fontSize: RFValue(24.5),
     color:'#D3D3D3'
   }
 });

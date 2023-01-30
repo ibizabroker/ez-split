@@ -4,6 +4,7 @@ import AppBarWithBack from '../components/AppBarWithBack';
 import { Button, Dialog } from '@rneui/themed';
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { RFValue } from "react-native-responsive-fontsize";
 
 export default function ExpenseDetails({ route }) {
   const { expense } = route.params;
@@ -59,7 +60,7 @@ export default function ExpenseDetails({ route }) {
         title="Delete"
         titleStyle={{
           fontFamily: 'Montserrat', 
-          fontSize: 16, 
+          fontSize: RFValue(14.5), 
           color: '#D3D3D3'
         }}
         buttonStyle={{
@@ -84,7 +85,7 @@ export default function ExpenseDetails({ route }) {
         onBackdropPress={toggleDialog}
         overlayStyle={{borderRadius: 10, backgroundColor: '#121212', borderWidth: 2, borderColor: '#332940'}}
       >
-        <Text style={{fontFamily: 'Montserrat-SemiBold', fontSize: 18, marginBottom: 10, color: '#D3D3D3'}}>Delete?</Text>
+        <Text style={{fontFamily: 'Montserrat-SemiBold', fontSize: RFValue(16.5), marginBottom: 10, color: '#D3D3D3'}}>Delete?</Text>
 				<Text style={{fontFamily: 'Montserrat', color: '#D3D3D3'}}>Are you sure you want to delete this expense?</Text>
         <Dialog.Actions>
           <Dialog.Button title="No, go back" titleStyle={{fontFamily: 'Montserrat-Medium'}} onPress={() => toggleDialog()}/>
@@ -102,7 +103,7 @@ const styles = StyleSheet.create({
   },
   heading: {
     fontFamily: 'Montserrat-Medium',
-    fontSize: 20,
+    fontSize: RFValue(18.5),
     color: '#FFFFFF',
     textAlign: 'center',
     marginTop: '3%',
@@ -110,14 +111,14 @@ const styles = StyleSheet.create({
   },
   key: {
     fontFamily: 'Montserrat',
-    fontSize: 16,
+    fontSize: RFValue(14.5),
     color: '#D3D3D3',
     marginLeft: '5%',
     marginBottom: '3%'
   },
   value: {
     fontFamily: 'Montserrat',
-    fontSize: 16,
+    fontSize: RFValue(14.5),
     color: '#75559F',
     marginBottom: '3%'
   }

@@ -5,6 +5,7 @@ import Expenses from '../screens/Expenses';
 import Balances from '../screens/Balances';
 import Export from '../screens/Export';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { RFValue } from "react-native-responsive-fontsize";
 
 const GroupTabs = ({ route }) => {
   const [index, setIndex] = useState(0);
@@ -141,7 +142,7 @@ const GroupTabs = ({ route }) => {
           title="Expenses"
           titleStyle={{
             fontFamily: 'Montserrat', 
-            fontSize: 14,
+            fontSize: RFValue(12.5),
             color: index === 0 ? '#FFFFFF' : '#808080'
           }}
         />
@@ -149,7 +150,7 @@ const GroupTabs = ({ route }) => {
           title="Balances"
           titleStyle={{ 
             fontFamily: 'Montserrat', 
-            fontSize: 14,
+            fontSize: RFValue(12.5),
             color: index === 1 ? '#FFFFFF' : '#808080'
           }}
         />
@@ -157,7 +158,7 @@ const GroupTabs = ({ route }) => {
           title="Export"
           titleStyle={{ 
             fontFamily: 'Montserrat', 
-            fontSize: 14,
+            fontSize: RFValue(12.5),
             color: index === 2 ? '#FFFFFF' : '#808080'
           }}
         />

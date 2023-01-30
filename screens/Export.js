@@ -5,6 +5,7 @@ import { onCapture } from './Balances';
 import * as XLSX from 'xlsx';
 import * as FileSystem from 'expo-file-system';
 import * as Sharing from 'expo-sharing';
+import { RFValue } from "react-native-responsive-fontsize";
 
 export default function Export(props) {
   const group = props.group;
@@ -40,7 +41,7 @@ export default function Export(props) {
             <ListItem.Title
               style={{
                 fontFamily: 'Montserrat',
-                fontSize: 16,
+                fontSize: RFValue(12.5),
                 color: '#D3D3D3',
                 padding: 8,
                 marginLeft: '5%'
@@ -62,7 +63,7 @@ export default function Export(props) {
             <ListItem.Title
               style={{
                 fontFamily: 'Montserrat',
-                fontSize: 16,
+                fontSize: RFValue(14.5),
                 color: '#D3D3D3',
                 padding: 8,
                 marginLeft: '5%'
@@ -83,7 +84,7 @@ const styles = StyleSheet.create({
   },
   heading: {
     fontFamily: 'Montserrat-Medium',
-    fontSize: 20,
+    fontSize: RFValue(18.5),
     color: '#FFFFFF',
     textAlign: 'center',
     marginTop: '3%',

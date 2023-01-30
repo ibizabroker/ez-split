@@ -4,6 +4,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import AppBar from '../components/AppBar';
 import { useNavigation, useIsFocused } from '@react-navigation/native';
 import { ListItem, Dialog } from '@rneui/themed';
+import { RFValue } from "react-native-responsive-fontsize";
 
 const Groups = () => {
   const isFocused = useIsFocused();
@@ -82,7 +83,7 @@ const Groups = () => {
                       <ListItem.Title
                         style={{
                           fontFamily: 'Montserrat',
-                          fontSize: 16,
+                          fontSize: RFValue(14.5),
                           color: '#D3D3D3',
                           padding: 8,
                           marginLeft: '5%'
@@ -100,7 +101,7 @@ const Groups = () => {
           onBackdropPress={toggleDialog}
           overlayStyle={{borderRadius: 10, backgroundColor: '#121212', borderWidth: 2, borderColor: '#332940'}}
         >
-          <Text style={{fontFamily: 'Montserrat-SemiBold', fontSize: 18, marginBottom: 10, color: '#D3D3D3'}}>Delete?</Text>
+          <Text style={{fontFamily: 'Montserrat-SemiBold', fontSize: RFValue(16.5), marginBottom: 10, color: '#D3D3D3'}}>Delete?</Text>
           <Text style={{fontFamily: 'Montserrat', color: '#D3D3D3'}}>Are you sure you want to delete this group?</Text>
           <Dialog.Actions>
             <Dialog.Button title="No, go back" titleStyle={{fontFamily: 'Montserrat-Medium'}} onPress={() => toggleDialog()}/>
@@ -127,7 +128,7 @@ const styles = StyleSheet.create({
   },
   noGroupsText: {
     fontFamily: 'Montserrat',
-    fontSize: 16,
+    fontSize: RFValue(14.5),
     color: '#D3D3D3',
     textAlign: 'center'
   }

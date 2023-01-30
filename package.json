@@ -21,15 +21,16 @@
     "expo-sharing": "^11.0.1",
     "expo-splash-screen": "^0.17.5",
     "expo-status-bar": "~1.4.2",
+    "expo-updates": "~0.15.6",
     "react": "18.1.0",
     "react-native": "0.70.5",
     "react-native-paper": "^5.1.2",
+    "react-native-responsive-fontsize": "^0.5.1",
     "react-native-safe-area-context": "^4.4.1",
     "react-native-sectioned-multi-select": "^0.9.1",
     "react-native-select-dropdown": "^3.2.1",
     "react-native-view-shot": "3.4.0",
-    "xlsx": "^0.18.5",
-    "expo-updates": "~0.15.6"
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

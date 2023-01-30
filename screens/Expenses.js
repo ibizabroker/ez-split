@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 import { ListItem, Divider, Button, Dialog } from '@rneui/themed';
 import { useNavigation, useIsFocused } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { RFValue } from "react-native-responsive-fontsize";
 
 export default function Expenses(props) {
   const group = props.group;
@@ -63,7 +64,7 @@ export default function Expenses(props) {
                       <ListItem.Title
                         style={{
                           fontFamily: 'Montserrat',
-                          fontSize: 14,
+                          fontSize: RFValue(12.5),
                           color: '#75559F',
                           marginBottom: 5,
                         }}
@@ -73,7 +74,7 @@ export default function Expenses(props) {
                       <ListItem.Subtitle
                         style={{
                           fontFamily: 'Montserrat',
-                          fontSize: 12,
+                          fontSize: RFValue(10.5),
                           color: '#808080',
                         }}
                       >
@@ -85,7 +86,7 @@ export default function Expenses(props) {
                         style={{
                           textAlign: 'right',
                           fontFamily: 'Montserrat',
-                          fontSize: 14,
+                          fontSize: RFValue(12.5),
                           color: '#75559F',
                           marginBottom: 5
                         }}
@@ -96,7 +97,7 @@ export default function Expenses(props) {
                         style={{
                           textAlign: 'right',
                           fontFamily: 'Montserrat',
-                          fontSize: 12,
+                          fontSize: RFValue(10.5),
                           color: '#808080',
                         }}
                       >
@@ -125,11 +126,11 @@ export default function Expenses(props) {
         title="Add Expense"
         titleStyle={{
           fontFamily: 'Montserrat', 
-          fontSize: 16, 
+          fontSize: RFValue(14.5), 
           color: '#D3D3D3'
         }}
         buttonStyle={{
-          width: 150,
+          width: 'auto',
           borderRadius: 10,
           paddingHorizontal: 20,
           paddingVertical: 15,
@@ -152,7 +153,7 @@ const styles = StyleSheet.create({
   },
   heading: {
     fontFamily: 'Montserrat-Medium',
-    fontSize: 20,
+    fontSize: RFValue(18.5),
     color: '#FFFFFF',
     textAlign: 'center',
     marginTop: '3%',
@@ -166,7 +167,7 @@ const styles = StyleSheet.create({
   },
   noExpensesText: {
     fontFamily: 'Montserrat',
-    fontSize: 16,
+    fontSize: RFValue(14.5),
     color: '#D3D3D3',
     textAlign: 'center'
   },

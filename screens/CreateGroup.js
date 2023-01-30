@@ -6,6 +6,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons'
 import SectionedMultiSelect from 'react-native-sectioned-multi-select';
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { RFValue } from "react-native-responsive-fontsize";
 
 const currencyList = [
   {
@@ -742,7 +743,7 @@ export function CreateGroup() {
 							marginBottom: '5%'
 						},
 						selectToggleText: {
-							fontSize: 16,
+							fontSize: RFValue(14.5),
 							fontFamily: 'Montserrat',
 						},
 					}}
@@ -769,7 +770,7 @@ export function CreateGroup() {
 						title="Add"
 						titleStyle={{
 							fontFamily: 'Montserrat', 
-							fontSize: 16, 
+							fontSize: RFValue(14.5), 
 							color: '#D3D3D3'
 						}}
 						buttonStyle={{
@@ -806,7 +807,7 @@ export function CreateGroup() {
 										title={member}
 										titleStyle={{
 											fontFamily: 'Montserrat',
-											fontSize: 12,
+											fontSize: RFValue(10.5),
 											color: '#D3D3D3'
 										}}
 										icon={{
@@ -834,7 +835,7 @@ export function CreateGroup() {
 					title="Submit"
 					titleStyle={{
 						fontFamily: 'Montserrat', 
-						fontSize: 16, 
+						fontSize: RFValue(14.5), 
 						color: '#D3D3D3'
 					}}
 					buttonStyle={{
@@ -853,7 +854,7 @@ export function CreateGroup() {
 					onBackdropPress={toggleDialog1}
 					overlayStyle={{borderRadius: 10, backgroundColor: '#121212', borderWidth: 2, borderColor: '#332940'}}
 				>
-					<Text style={{fontFamily: 'Montserrat-SemiBold', fontSize: 18, marginBottom: 10, color: '#D3D3D3'}}>Bro?</Text>
+					<Text style={{fontFamily: 'Montserrat-SemiBold', fontSize: RFValue(16.5), marginBottom: 10, color: '#D3D3D3'}}>Bro?</Text>
 					<Text style={{fontFamily: 'Montserrat', color: '#D3D3D3'}}>Stop being lazy and fill everything.</Text>
 					<Dialog.Actions>
 						<Dialog.Button title="OK" titleStyle={{fontFamily: 'Montserrat-Medium'}} onPress={() => toggleDialog1()}/>
@@ -865,7 +866,7 @@ export function CreateGroup() {
 					onBackdropPress={toggleDialog2}
 					overlayStyle={{borderRadius: 10, backgroundColor: '#121212', borderWidth: 2, borderColor: '#332940'}}
 				>
-					<Text style={{fontFamily: 'Montserrat-SemiBold', fontSize: 18, marginBottom: 10, color: '#D3D3D3'}}>Loner Alert!</Text>
+					<Text style={{fontFamily: 'Montserrat-SemiBold', fontSize: RFValue(16.5), marginBottom: 10, color: '#D3D3D3'}}>Loner Alert!</Text>
 					<Text style={{fontFamily: 'Montserrat', color: '#D3D3D3'}}>Add one more person.</Text>
 					<Dialog.Actions>
 						<Dialog.Button title="OK" titleStyle={{fontFamily: 'Montserrat-Medium'}} onPress={() => toggleDialog2()}/>
@@ -877,7 +878,7 @@ export function CreateGroup() {
 					onBackdropPress={toggleDialog3}
 					overlayStyle={{borderRadius: 10, backgroundColor: '#121212', borderWidth: 2, borderColor: '#332940'}}
 				>
-					<Text style={{fontFamily: 'Montserrat-SemiBold', fontSize: 18, marginBottom: 10, color: '#D3D3D3'}}>Hmmmm</Text>
+					<Text style={{fontFamily: 'Montserrat-SemiBold', fontSize: RFValue(16.5), marginBottom: 10, color: '#D3D3D3'}}>Hmmmm</Text>
 					<Text style={{fontFamily: 'Montserrat', color: '#D3D3D3'}}>Repeating the same name doesn't mean multiple friends.</Text>
 					<Dialog.Actions>
 						<Dialog.Button title="OK" titleStyle={{fontFamily: 'Montserrat-Medium'}} onPress={() => toggleDialog3()}/>
@@ -889,7 +890,7 @@ export function CreateGroup() {
 					onBackdropPress={toggleDialog4}
 					overlayStyle={{borderRadius: 10, backgroundColor: '#121212', borderWidth: 2, borderColor: '#332940'}}
 				>
-					<Text style={{fontFamily: 'Montserrat-SemiBold', fontSize: 18, marginBottom: 10, color: '#D3D3D3'}}>Oops</Text>
+					<Text style={{fontFamily: 'Montserrat-SemiBold', fontSize: RFValue(16.5), marginBottom: 10, color: '#D3D3D3'}}>Oops</Text>
 					<Text style={{fontFamily: 'Montserrat', color: '#D3D3D3'}}>You already used this title once.</Text>
 					<Dialog.Actions>
 						<Dialog.Button title="OK" titleStyle={{fontFamily: 'Montserrat-Medium'}} onPress={() => toggleDialog4()}/>
@@ -937,7 +938,7 @@ const styles = StyleSheet.create({
   inputStyle: {
     marginLeft: 10,
     fontFamily: 'Montserrat', 
-    fontSize: 16,
+    fontSize: RFValue(14.5),
     color: '#D3D3D3',
   },
 });

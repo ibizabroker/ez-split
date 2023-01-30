@@ -3,6 +3,7 @@ import { BackHandler } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { RFValue } from "react-native-responsive-fontsize";
 
 import Groups from "../screens/Groups";
 import CreateGroup from '../screens/CreateGroup';
@@ -82,7 +83,7 @@ function BottomNavigationBar() {
           component={GroupsStack}
           options={{
             tabBarLabel: 'Groups',
-            tabBarLabelStyle: {fontFamily: 'Montserrat-Medium', fontSize: 11, marginBottom: 10},
+            tabBarLabelStyle: {fontFamily: 'Montserrat-Medium', fontSize: RFValue(9.5), marginBottom: 10},
             tabBarIconStyle: {marginTop: 10},
             tabBarIcon: ({ color }) => (
               <FontAwesome5 name="layer-group" color={color} size={26} />
@@ -94,7 +95,7 @@ function BottomNavigationBar() {
           component={CreateGroupStack}
           options={{
             tabBarLabel: 'Create Group',
-            tabBarLabelStyle: {fontFamily: 'Montserrat-Medium', fontSize: 11, marginBottom: 10},
+            tabBarLabelStyle: {fontFamily: 'Montserrat-Medium', fontSize: RFValue(9.5), marginBottom: 10},
             tabBarIconStyle: {marginTop: 10},
             tabBarIcon: ({ color }) => (
               <FontAwesome5 name="plus-circle" color={color} size={26} />

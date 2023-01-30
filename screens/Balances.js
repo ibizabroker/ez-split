@@ -4,6 +4,7 @@ import { useIsFocused } from '@react-navigation/native';
 import { captureRef } from 'react-native-view-shot';
 import * as Sharing from 'expo-sharing';
 import * as FileSystem from 'expo-file-system';
+import { RFValue } from "react-native-responsive-fontsize";
 
 export default function Balances(props) {
   const group = props.group;
@@ -98,7 +99,7 @@ const styles = StyleSheet.create({
   },
   heading: {
     fontFamily: 'Montserrat-Medium',
-    fontSize: 20,
+    fontSize: RFValue(18.5),
     color: '#FFFFFF',
     textAlign: 'center',
     marginTop: '3%',
@@ -106,7 +107,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontFamily: 'Montserrat',
-    fontSize: 16,
+    fontSize: RFValue(14.5),
     color: '#D3D3D3',
     textAlign: 'left',
     marginLeft: '5%',
@@ -114,7 +115,7 @@ const styles = StyleSheet.create({
   },
   textColor: {
     fontFamily: 'Montserrat',
-    fontSize: 16,
+    fontSize: RFValue(14.5),
     color: '#75559F',
     textAlign: 'left',
     marginLeft: '5%',
@@ -122,7 +123,7 @@ const styles = StyleSheet.create({
   },
   summary: {
     fontFamily: 'Montserrat-Medium',
-    fontSize: 20,
+    fontSize: RFValue(18.5),
     color: '#FFFFFF',
     textAlign: 'left',
     marginTop: '10%',
