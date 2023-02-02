@@ -16,7 +16,7 @@ export default function Export(props) {
     const ws = XLSX.utils.json_to_sheet(jsonForExcel);
     XLSX.utils.book_append_sheet(wb, ws, "Expenses");
     const file = XLSX.write(wb, { type: "base64", bookType: 'xlsx' });
-    const filename = FileSystem.documentDirectory + `${group.title} Expenses.xlsx`;
+    const filename = FileSystem.documentDirectory + `${group.title}_Expenses.xlsx`;
     FileSystem.writeAsStringAsync(filename, file, {
       encoding: FileSystem.EncodingType.Base64
     }).then(() => {
