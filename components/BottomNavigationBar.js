@@ -4,6 +4,7 @@ import { FontAwesome5 } from '@expo/vector-icons';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { RFValue } from "react-native-responsive-fontsize";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import Groups from "../screens/Groups";
 import CreateGroup from '../screens/CreateGroup';
@@ -64,6 +65,7 @@ function CreateGroupStack() {
 }
 
 function BottomNavigationBar() {
+  const insets = useSafeAreaInsets();
   return (
       <Tab.Navigator
         initialRouteName="Feed"
@@ -74,7 +76,7 @@ function BottomNavigationBar() {
           tabBarActiveBackgroundColor: '#332940',
           tabBarInactiveBackgroundColor: '#332940',
           tabBarHideOnKeyboard: true,
-          tabBarStyle: {height: 63, borderTopWidth: 0},
+          tabBarStyle: {height: insets.bottom + 63, borderTopWidth: 0},
         }}
         
       >

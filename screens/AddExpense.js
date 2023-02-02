@@ -248,6 +248,7 @@ export default function AddExpense({ route, navigation }) {
             onChange={onChange}
             dateFormat="dayofweek day month"
             accentColor="#1D3557"
+						textColor="#D3D3D3"
           />
         )}
 
