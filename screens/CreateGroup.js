@@ -763,6 +763,7 @@ export function CreateGroup() {
 						containerStyle={styles.containerStyleMembers}
 						inputContainerStyle={styles.inputContainerStyle}
 						inputStyle={styles.inputStyle}
+            renderErrorMessage={false}
 						value={member}
 						onChangeText={member => setMember(member)}
 					/>
@@ -940,6 +941,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Montserrat', 
     fontSize: RFValue(14.5),
     color: '#D3D3D3',
+    paddingBottom: 4,
   },
 });
 
