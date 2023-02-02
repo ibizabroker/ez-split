@@ -54,7 +54,7 @@ const Groups = () => {
         <AppBar ez={'EZ '} split={'Split'} />
 
         <ScrollView contentContainerStyle={{flexGrow: 1}}>
-          {groups === null 
+          {groups === null || groups.length === 0
             ? 
               <View style={styles.container}>
                 <Text style={styles.noGroupsText}>You don't have any groups yet. Go to the Create Group tab to add a group.</Text>
