@@ -27,6 +27,7 @@ export default function ExpenseDetails({ route }) {
 
       await AsyncStorage.setItem(key, JSON.stringify(parsedArray));
       toggleDialog();
+      navigation.pop();
     } catch (error) {
         console.log(error);
     }
@@ -89,7 +90,7 @@ export default function ExpenseDetails({ route }) {
 				<Text style={{fontFamily: 'Montserrat', color: '#D3D3D3'}}>Are you sure you want to delete this expense?</Text>
         <Dialog.Actions>
           <Dialog.Button title="No, go back" titleStyle={{fontFamily: 'Montserrat-Medium'}} onPress={() => toggleDialog()}/>
-          <Dialog.Button title="Yes" titleStyle={{fontFamily: 'Montserrat-Medium', color: 'red'}} onPress={() => {removeJSON(deleteKey, deleteValue); navigation.pop()}}/>
+          <Dialog.Button title="Yes" titleStyle={{fontFamily: 'Montserrat-Medium', color: 'red'}} onPress={() => {removeJSON(deleteKey, deleteValue)}}/>
         </Dialog.Actions>
       </Dialog>
     </View>

@@ -87,7 +87,7 @@ const GroupTabs = ({ route }) => {
 
     let json4 = json3.reduce(function(acc, curr) {
       return Object.assign(acc, curr);
-    });
+    }, []);
     json4 = Object.assign(json4, {"paidBy": "total"});
     json.push(json4);
 
