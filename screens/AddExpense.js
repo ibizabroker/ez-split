@@ -323,7 +323,7 @@ export default function AddExpense({ route, navigation }) {
 				<Text style={styles.participationText}>
 					Participants
 				</Text>
-				<Divider width={2} color='#332940'/>
+				<Divider width={2.2} color='#332940' />
 				<ScrollView>
 						{
 							group.members.map((member, index) => {

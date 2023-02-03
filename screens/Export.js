@@ -38,7 +38,7 @@ export default function Export(props) {
     <ScrollView contentContainerStyle={{flexGrow: 1}}>
       <View style={styles.container}>
         <Text style={styles.heading}>{group.title}</Text>
-        <Divider width={2.5} color='#332940' />
+        <Divider width={2.2} color='#332940' />
         <ListItem
           containerStyle={{
             backgroundColor: '#121212',

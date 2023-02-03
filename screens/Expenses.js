@@ -38,7 +38,7 @@ export default function Expenses(props) {
           ?
             <></>
           :
-            <Divider width={2.2} color='#332940'/>
+            <Divider width={2.2} color='#332940' />
         }
         {expenses === null || expenses.length === 0
           ? 
