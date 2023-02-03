@@ -76,7 +76,7 @@ function BottomNavigationBar() {
           tabBarActiveBackgroundColor: '#332940',
           tabBarInactiveBackgroundColor: '#332940',
           tabBarHideOnKeyboard: true,
-          tabBarStyle: {height: insets.bottom + 63, borderTopWidth: 0},
+          tabBarStyle: {height: insets.bottom + '7.5%', borderTopWidth: 0},
         }}
         
       >
@@ -85,6 +85,7 @@ function BottomNavigationBar() {
           component={GroupsStack}
           options={{
             tabBarLabel: 'Groups',
+            tabBarLabelPosition: 'below-icon',
             tabBarLabelStyle: {fontFamily: 'Montserrat-Medium', fontSize: RFValue(9.5), marginBottom: 10},
             tabBarIconStyle: {marginTop: 10},
             tabBarIcon: ({ color }) => (
@@ -97,6 +98,7 @@ function BottomNavigationBar() {
           component={CreateGroupStack}
           options={{
             tabBarLabel: 'Create Group',
+            tabBarLabelPosition: 'below-icon',
             tabBarLabelStyle: {fontFamily: 'Montserrat-Medium', fontSize: RFValue(9.5), marginBottom: 10},
             tabBarIconStyle: {marginTop: 10},
             tabBarIcon: ({ color }) => (
