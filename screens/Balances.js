@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, ScrollView } from 'react-native'
+import { View, Text, StyleSheet, ScrollView, Platform } from 'react-native'
 import React, { useEffect } from 'react'
 import { useIsFocused } from '@react-navigation/native';
 import { captureRef } from 'react-native-view-shot';
@@ -79,14 +79,19 @@ export const onCapture = (ref) => {
     result: "tmpfile"
   }).then(
     uri => {
-      let uriArray = uri.split("/");
-      let nameToChange = uriArray[uriArray.length - 1];
-      let renamedURI = uri.replace(
-        nameToChange, "Expenses.png"
-      );
-      FileSystem.copyAsync({from: uri, to: renamedURI}).then(() => {
-        Sharing.shareAsync('file://' + renamedURI);
-      })
+      if (Platform.OS === "ios") {
+        Sharing.shareAsync('file://' + uri);
+      }
+      else {
+        let uriArray = uri.split("/");
+        let nameToChange = uriArray[uriArray.length - 1];
+        let renamedURI = uri.replace(
+          nameToChange, "Expenses.png"
+        );
+        FileSystem.copyAsync({from: uri, to: renamedURI}).then(() => {
+          Sharing.shareAsync('file://' + renamedURI);
+        })
+      } 
     },
     error => console.error('Export failed', error)
   );
