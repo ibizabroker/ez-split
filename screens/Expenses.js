@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet, ScrollView } from 'react-native'
 import React, { useState, useEffect } from 'react'
-import { ListItem, Divider, Button, Dialog } from '@rneui/themed';
+import { ListItem, Divider, Button } from '@rneui/themed';
 import { useNavigation, useIsFocused } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { RFValue } from "react-native-responsive-fontsize";
@@ -38,7 +38,7 @@ export default function Expenses(props) {
           ?
             <></>
           :
-            <Divider width={2.5} color='#332940' />
+            <Divider width={2.2} color='#332940'/>
         }
         {expenses === null || expenses.length === 0
           ? 

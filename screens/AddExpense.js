@@ -1,7 +1,7 @@
 import { Text, View, ScrollView, StyleSheet, SafeAreaView, TouchableWithoutFeedback, Keyboard, Platform } from 'react-native';
 import React, { useState } from 'react';
 import AppBarWithBack from '../components/AppBarWithBack';
-import { Input, Button, Dialog, ListItem } from '@rneui/themed';
+import { Input, Button, Dialog, ListItem, Divider } from '@rneui/themed';
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import SelectDropdown from 'react-native-select-dropdown';
 import DateTimePicker from '@react-native-community/datetimepicker';
@@ -172,7 +172,7 @@ export default function AddExpense({ route, navigation }) {
 					onChangeText={title => setTitle(title)}
 				/>
 
-        <View style={{flexDirection: 'row', justifyContent: 'center', marginTop: '5%'}}>
+				<View style={{flexDirection: 'row', marginHorizontal: '10%', marginTop: '5%', justifyContent: 'space-between', width: '80%'}}>
           <Button
 						title={group.currency}
 						titleStyle={{
@@ -181,10 +181,9 @@ export default function AddExpense({ route, navigation }) {
 							color: '#D3D3D3'
 						}}
 						buttonStyle={{
-							marginRight: 5,
               borderRadius: 10,
 							height: 60,
-							width: 63,
+							width: 70
 						}}
 						disabled={true}
 						disabledStyle={{
@@ -324,6 +323,7 @@ export default function AddExpense({ route, navigation }) {
 				<Text style={styles.participationText}>
 					Participants
 				</Text>
+				<Divider width={2} color='#332940'/>
 				<ScrollView>
 						{
 							group.members.map((member, index) => {
@@ -505,7 +505,7 @@ const styles = StyleSheet.create({
     borderColor: '#332940',
     backgroundColor: '#1E1E1E',
 		height: 60,
-		width: '63%',
+		width: '75%',
 	},
   inputContainerStyle: {
 		borderBottomWidth: 0,

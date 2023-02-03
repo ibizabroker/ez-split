@@ -755,7 +755,7 @@ export function CreateGroup() {
 					hideConfirm={true}
 				/>
 
-				<View style={{flexDirection: 'row', justifyContent: 'space-evenly', marginTop: '5%'}}>
+        <View style={{flexDirection: 'row', marginHorizontal: '5%', marginTop: '5%', justifyContent: 'space-between', width: '90%'}}>
 					<Input
 						placeholder='Add Members'
 						placeholderTextColor='#808080'
@@ -777,7 +777,7 @@ export function CreateGroup() {
 						buttonStyle={{
 							borderRadius: 10,
 							height: 60,
-							width: 69,
+							width: 70,
 							backgroundColor: '#332940'
 						}}
 						disabled={member.length === 0 ? true : false}
@@ -795,7 +795,7 @@ export function CreateGroup() {
 							setMember('')
 						}}
 					/>
-				</View>
+        </View>
 
 				<ScrollView>
 					<View style={{flexDirection: 'row',  flexWrap: 'wrap', justifyContent: 'flex-start', alignSelf: 'center', width: '90%'}}>
@@ -930,7 +930,7 @@ const styles = StyleSheet.create({
     borderColor: '#332940',
     backgroundColor: '#1E1E1E',
 		height: 60,
-		width: '65%',
+		width: '75%',
 	},
   inputContainerStyle: {
 		borderBottomWidth: 0,
