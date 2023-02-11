@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "ez-split",
-    "slug": "ez-split",
+    "name": "EZ Split",
+    "slug": "EZ-Split",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -21,6 +21,8 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "com.ibizabroker.EZSplit",
+      "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#000000"
@@ -31,7 +33,7 @@
     },
     "extra": {
       "eas": {
-        "projectId": "4a8ce1c5-e9fa-4757-8ab4-0348390e471d"
+        "projectId": "6e301716-c0f1-4dc9-965f-00a0f8bf309a"
       }
     },
     "owner": "ibizabroker"
