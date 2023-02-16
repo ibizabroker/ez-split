@@ -24,7 +24,7 @@
 <p align="center">
   <a href="#overview">Overview</a>
   •
-  <a href="#app-design">App Design</a>
+  <a href="#screenshots">Screenshots</a>
   •
   <a href="#installation">Installation</a>
   •
@@ -41,8 +41,13 @@ EZ Split is super versatile, allowing you to create groups with any currency fro
 
 Don't wait, download <a href="https://play.google.com/store/apps/details?id=com.ibizabroker.EZSplit">EZ Split</a> today and start splitting expenses in the easiest way possible!
 
-# App Design
-<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="100%" height="450" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FLGlAFz7qoakgYMqS7qpapc%2FEZ-Split%3Fnode-id%3D0%253A1%26t%3DeoH04vI3ktDupdcm-1" allowfullscreen></iframe>
+# Screenshots
+[Figma Design](https://www.figma.com/file/LGlAFz7qoakgYMqS7qpapc/EZ-Split?node-id=0%3A1&t=eoH04vI3ktDupdcm-1)
+
+||||
+|--|--|--|
+| ![groups](./screenshots/phone/1.png) | ![create_group](./screenshots/phone/2.png) |![add_expense](./screenshots/phone/3.png) |
+| ![expenses](./screenshots/phone/4.png) | ![balances](./screenshots/phone/6.png) |![export](./screenshots/phone/7.png) |
 
 # Installation
 The recommended expo-cli version for this app is 6+.
