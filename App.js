@@ -5,7 +5,7 @@ import GroupTabs from './components/GroupTabs';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { SafeAreaProvider, initialWindowMetrics  } from 'react-native-safe-area-context';
 
 const Stack = createStackNavigator();
 
@@ -26,11 +26,11 @@ function App() {
 }
 
 export default () => {
-  return (
-    <NavigationContainer theme={{ colors: { background: '#121212' } }}>
-     <SafeAreaProvider>
+  return (   
+     <SafeAreaProvider initialMetrics={initialWindowMetrics}>
+      <NavigationContainer theme={{ colors: { background: '#121212' } }}>
         <App />
+      </NavigationContainer>
      </SafeAreaProvider>     
-    </NavigationContainer>
   )
 }
